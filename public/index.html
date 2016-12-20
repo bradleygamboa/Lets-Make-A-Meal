@@ -23,35 +23,11 @@
 </head>
 
 <body>
+<a name="top"></a>
     <nav class="red lighten-2" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo white-text" style="color:black;">Project 1</a>
-            <!-- Sign in w/Google -->
+        <div class="nav-wrapper container right-align">
+            <a id="logo-container" href="#about" class="brand-logo white-text" style="color:black; font-size: 16px;">About Us</a>
             <div id="my-signin2" class="brand-logo right"></div>
-            <script>
-            function onSuccess(googleUser) {
-                // This is where we control what happens after they are logged in
-                var profile = googleUser.getBasicProfile();
-                // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail());
-            }
-
-            function onFailure(error) {
-                console.log(error);
-            }
-
-            function renderButton() {
-                gapi.signin2.render('my-signin2', {
-                    'scope': 'profile email',
-                    'width': 150,
-                    'height': 50,
-                    'onsuccess': onSuccess,
-                    'onfailure': onFailure
-                });
-            }
-            </script>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
@@ -105,7 +81,15 @@
         <div class="container-fluid">
         <div class="section">
             <!--   Icon Section   -->
+            <a name="about"></a>
             <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center red-text text-darken-1"><i class="material-icons">web</i></h2>
+                        <h5 class="center">Bradley Gamboa</h5>
+                        <p class="light">Hello my name is Bradley. I was born in McAllen TX and have lived in Austin for 5 years. On our second class project I worked on most of the front-end design using the Materialize library and on the back-end utilizing AJAX calls to access a recipes API.</p>
+                    </div>
+                </div>
                 <div class="col s12 m4">
                     <div class="icon-block">
                         <h2 class="center red-text"><i class="material-icons">home</i></h2>
@@ -120,13 +104,6 @@
                         <p class="light">Hello I’m Bryan. Born at a very young age, a Caffeine dependent life-form and self-made thousandaire. The guy, with much help from my awesome teammates, turned the rough idea into reality. Assisted with both front end and back end developement for the project. Matt Damon!</p>
                     </div>
                 </div>
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center red-text text-darken-1"><i class="material-icons">web</i></h2>
-                        <h5 class="center">Bradley Gamboa</h5>
-                        <p class="light">Hello my name is Bradley and I like to Party. Anyways I worked a lot on the front-end and utilizing Googles Login API to help us track who is accessing our app. Thank you Roger and Caren for your help thoughout.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -134,34 +111,17 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h5 class="header col s12 light headerFont2">Clever comment about how awesome we are as a team</h5>
+                    <h5 class="header col s12 light headerFont2">Insert clever comment about how awesome we are as a team!</h5>
                 </div>
             </div>
         </div>
         <div class="parallax"><img src="https://media.giphy.com/media/iJYM4FcVSmOSk/giphy.gif" alt="Unsplashed background img 2"></div>
     </div>
-            <footer class="page-footer">
-          <div class="container">
-            <div class="row">
- 
- <a style="color: white;" href="chart.html"></a>
-
- <!-- Signout button -->
-    <a style="color: white;" class="right" href="http://localhost:3000" onclick="signOut();">Sign out</a>
-    <script>
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function() {
-            console.log('User signed out.');
-        });
-    }
-    </script>
-              </div>
-            </div>
-          </div>
+            <footer class="page-footer center-align">
+          <a href="#top" style="font-size: 12px; color: white;">Back to top</a>
           <div class="footer-copyright">
             <div class="container center">
-            © 2016 Copyright Bradley, Andres, Bryan #1
+            © 2016 Copyright Bradley, Andres, Bryan
             </div>
           </div>
         </footer>
@@ -236,6 +196,28 @@
 
         });
 
+    });
+    // scroll to zoom function
+    $(function() {
+        $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    $(function() {
+        $('.nav a').on('click', function() {
+            if ($('.navbar-toggle').css('display') != 'none') {
+                $(".navbar-toggle").trigger("click");
+            }
+        });
     });
     </script>
 
